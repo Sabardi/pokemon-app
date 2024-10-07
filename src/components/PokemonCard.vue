@@ -7,7 +7,8 @@
         <img :src="generateImageUrl()" class="w-full">
         <!-- footer -->
         <section class="p-6 uppercase text-center">
-            <p>{{ props.pokemon.name.split("-").join(" ") }}</p>
+            <router-link :to="`/${pokemonId}`" class="hover:text-blue-500">{{ props.pokemon.name.split("-").join(" ")
+                }}</router-link>
         </section>
     </section>
 </template>
