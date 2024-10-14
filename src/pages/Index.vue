@@ -32,17 +32,18 @@
     </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
+import { useBookmarkStore } from "@/stores/bookmark";
 import { ref, onMounted } from 'vue';
-import PokemonCard from '../components/PokemonCard.vue';
-import { useBookmarkStore } from '@/stores/bookmark';
+import PokemonCard from '@/components/PokemonCard.vue';
+import type { Pokemon } from '@/types';
 
 // initials
 const bookmarkStore = useBookmarkStore()
 
 // refs
-const pokemons = ref()
+const pokemons = ref<Pokemon[]>()
 
 onMounted(async () => {
 

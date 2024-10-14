@@ -13,21 +13,23 @@
     </section>
 </template>
 
-<script setup>
-import { useBookmarkStore } from '@/stores/bookmark';
+<script setup lang="ts">
+import { useBookmarkStore } from "@/stores/bookmark";
 import { computed } from 'vue';
+import type { Pokemon } from '@/types';
 
+interface Props {
+    pokemon: Pokemon
+}
 
 // initials
 const { addBookmark, isBookmarked } = useBookmarkStore()
 
 // props
-const props = defineProps({
-    pokemon: Object
-})
+const props = defineProps<Props>()
 
 // computeds
-const pokemonId = computed(() => props.pokemon.url.split("/")[6])
+const pokemonId = computed<number>(() => parseInt(props.pokemon.url.split("/")[6]))
 
 // handler: generate image url
 const generateImageUrl = () => {
